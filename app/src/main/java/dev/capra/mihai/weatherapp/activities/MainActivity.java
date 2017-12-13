@@ -1,6 +1,7 @@
 package dev.capra.mihai.weatherapp.activities;
 
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.view.Menu;
@@ -8,7 +9,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.animation.AlphaAnimation;
 
+import java.util.Locale;
+
 import dev.capra.mihai.weatherapp.R;
+import io.nlopez.smartlocation.OnLocationUpdatedListener;
+import io.nlopez.smartlocation.SmartLocation;
 
 public class MainActivity extends BaseActivity {
 
@@ -18,6 +23,8 @@ public class MainActivity extends BaseActivity {
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         }
+
+        SmartLocation.with(MainActivity.this).location().start(new LocationUpdated());
         ConstraintLayout layout = findViewById(R.id.main_layout);
         AlphaAnimation animation = new AlphaAnimation(0.0f, 1.0f);
         animation.setFillAfter(true);
@@ -59,5 +66,12 @@ public class MainActivity extends BaseActivity {
             overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private class LocationUpdated implements OnLocationUpdatedListener{
+        @Override
+        public void onLocationUpdated(Location location) {
+            
+        }
     }
 }
