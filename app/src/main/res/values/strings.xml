@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="location">Location</string>
+    <string name="temperature">temperature</string>
+    <string name="breeze">breeze</string>
+    <string name="wind_direction">direction</string>
+    <string name="settings_toolbar_title">Settings</string>
+    <string name="about_toolbar_title">About</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_about">About</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="developed_by_leboprojects">Developed by LeboProjects</string>
+    <string name="weather_app">Weather App</string>
+    <string name="_2017_weather_app">© 2017 Weather App</string>
+    <string name="version_1_0_0">Version 1.0.0</string>
+    <string name="_7_u00b0_c">7° C</string>
+    <string name="time">--:--</string>
+    <string name="time_1">--:--</string>
+    <string name="last_updated">------</string>
+    <string name="c">-..-- C</string>
+    <string name="wind_speed">-- m/s</string>
+    <string name="updated_1">---</string>
+    <string name="space_1">---</string>
+    <string name="day1_temp">--..-- C</string>
+    <string name="day2">---</string>
+    <string name="day3">---</string>
+    <string name="day3_temp">--..-- C</string>
+    <string name="day4">---</string>
+    <string name="day2_temp">--..-- C</string>
+    <string name="day4_temp">--..-- C</string>
+    <string name="last_update">Last update --.--.-- --:--</string>
 </resources>
