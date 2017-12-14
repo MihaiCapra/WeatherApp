@@ -1,35 +1,53 @@
 package dev.capra.mihai.weatherapp.activities;
 
 import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.animation.AlphaAnimation;
-
+import android.widget.TextView;
 import java.util.Locale;
 
 import dev.capra.mihai.weatherapp.R;
-import io.nlopez.smartlocation.OnLocationUpdatedListener;
-import io.nlopez.smartlocation.SmartLocation;
+import dev.capra.mihai.weatherapp.models.WeatherData;
+import dev.capra.mihai.weatherapp.network.ApiClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends BaseActivity {
+    private TextView mTemp;
+    private TextView mLoaction;
+    private TextView mCurrentState;
+    private TextView mSunriseTime;
+    private TextView mSunsetTime;
+    private TextView mMinMaxTemp;
+    private TextView mWindSpeed;
+    private TextView mWindDirection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getSupportActionBar() != null){
+        mTemp = findViewById(R.id.temperature);
+        mLoaction = findViewById(R.id.location);
+        mCurrentState = findViewById(R.id.today_text);
+        mSunriseTime = findViewById(R.id.sunrise_time);
+        mSunsetTime = findViewById(R.id.sunset_time);
+        mMinMaxTemp = findViewById(R.id.today_min_max_temp_txt);
+        mWindSpeed = findViewById(R.id.wind_speed_txt);
+        mWindDirection = findViewById(R.id.wind_direction);
+
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         }
-
-        SmartLocation.with(MainActivity.this).location().start(new LocationUpdated());
         ConstraintLayout layout = findViewById(R.id.main_layout);
         AlphaAnimation animation = new AlphaAnimation(0.0f, 1.0f);
         animation.setFillAfter(true);
         animation.setDuration(800);
         layout.startAnimation(animation);
+        getWeatherData();
     }
 
     @Override
@@ -68,10 +86,27 @@ public class MainActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class LocationUpdated implements OnLocationUpdatedListener{
-        @Override
-        public void onLocationUpdated(Location location) {
-            
-        }
+    private void getWeatherData(){
+        Call<WeatherData> call = ApiClient.getOpenWeatherInterface().getWeatherData();
+
+        call.enqueue(new Callback<WeatherData>() {
+            @Override
+            public void onResponse(Call<WeatherData> call, Response<WeatherData> response) {
+                mTemp.setText(String.format(Locale.US, "%d °C",response.body().getCurrentTemp()));
+                mLoaction.setText(response.body().getCity());
+                mCurrentState.setText(response.body().getWeatherDescription());
+                mSunriseTime.setText(String.format(Locale.US, "%d", response.body().getSunrise()));
+                mSunsetTime.setText(String.format(Locale.US, "%d", response.body().getSunset()));
+                mMinMaxTemp.setText(String.format("%s...%s",
+                        response.body().getMinTemp(),response.body().getMaxTemp()));
+                mWindSpeed.setText(String.format(Locale.US,"%.1f m/s",response.body().getWindSpeed()));
+                mWindDirection.setText(String.format(Locale.US, "%d",response.body().getWindDirection()));
+            }
+
+            @Override
+            public void onFailure(Call<WeatherData> call, Throwable t) {
+
+            }
+        });
     }
 }
