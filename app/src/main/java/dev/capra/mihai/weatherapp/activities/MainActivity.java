@@ -13,6 +13,7 @@ import java.util.Locale;
 import dev.capra.mihai.weatherapp.R;
 import dev.capra.mihai.weatherapp.models.WeatherData;
 import dev.capra.mihai.weatherapp.network.ApiClient;
+import dev.capra.mihai.weatherapp.utils.Utils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -95,12 +96,12 @@ public class MainActivity extends BaseActivity {
                 mTemp.setText(String.format(Locale.US, "%d °C",response.body().getCurrentTemp()));
                 mLoaction.setText(response.body().getCity());
                 mCurrentState.setText(response.body().getWeatherDescription());
-                mSunriseTime.setText(String.format(Locale.US, "%d", response.body().getSunrise()));
-                mSunsetTime.setText(String.format(Locale.US, "%d", response.body().getSunset()));
+                mSunriseTime.setText(Utils.getHourMinutes(response.body().getSunrise()));
+                mSunsetTime.setText(Utils.getHourMinutes(response.body().getSunset()));
                 mMinMaxTemp.setText(String.format("%s...%s",
                         response.body().getMinTemp(),response.body().getMaxTemp()));
                 mWindSpeed.setText(String.format(Locale.US,"%.1f m/s",response.body().getWindSpeed()));
-                mWindDirection.setText(String.format(Locale.US, "%d",response.body().getWindDirection()));
+                mWindDirection.setText(Utils.DegreesToCardinalDetailed(response.body().getWindDirection()));
             }
 
             @Override

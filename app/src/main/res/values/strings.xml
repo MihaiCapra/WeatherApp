@@ -29,4 +29,11 @@
     <string name="day2_temp">--..-- C</string>
     <string name="day4_temp">--..-- C</string>
     <string name="last_update">Last update --.--.-- --:--</string>
+    <string name="mph">MPH</string>
+    <string name="kmph">KMPH</string>
+    <string name="wind_speed_txt">Wind Speed</string>
+    <string name="u00b0_k">° K</string>
+    <string name="u00b0_f">° F</string>
+    <string name="u00b0_c">° C</string>
+    <string name="temperature_format">Temperature Format</string>
 </resources>
