@@ -27,37 +27,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include" />
 
-    <RadioButton
-        android:id="@+id/celsius_radio"
+    <RadioGroup
+        android:id="@+id/radio_group_temperature_pref"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/u00b0_c"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
-    <RadioButton
-        android:id="@+id/f_radio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/u00b0_f"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <RadioButton
+            android:id="@+id/celsius_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/u00b0_c" />
 
-    <RadioButton
-        android:id="@+id/kelvin_radio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/u00b0_k"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <RadioButton
+            android:id="@+id/f_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/u00b0_f" />
+
+        <RadioButton
+            android:id="@+id/kelvin_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/u00b0_k" />
+
+    </RadioGroup>
 
     <TextView
         android:id="@+id/wind_speed_prefs"
@@ -68,26 +69,31 @@
         android:text="@string/wind_speed_txt"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/celsius_radio" />
+        app:layout_constraintTop_toBottomOf="@+id/radio_group_temperature_pref" />
 
-    <RadioButton
-        android:id="@+id/wind_kmph"
-        android:layout_width="wrap_content"
-        android:layout_height="31dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/kmph"
-        app:layout_constraintStart_toStartOf="@+id/wind_speed_prefs"
-        app:layout_constraintTop_toBottomOf="@+id/wind_speed_prefs" />
 
-    <RadioButton
-        android:id="@+id/wind_mph"
+    <RadioGroup
+        android:id="@+id/wind_Speed_radio_prefs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/mph"
-        app:layout_constraintEnd_toEndOf="@+id/f_radio"
-        app:layout_constraintStart_toStartOf="@+id/f_radio"
-        app:layout_constraintTop_toBottomOf="@+id/wind_speed_prefs" />
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/wind_speed_prefs"
+        app:layout_constraintTop_toBottomOf="@+id/wind_speed_prefs">
+
+        <RadioButton
+            android:id="@+id/wind_kmph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/kmph" />
+
+        <RadioButton
+            android:id="@+id/wind_mph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/mph" />
+    </RadioGroup>
 </android.support.constraint.ConstraintLayout>
