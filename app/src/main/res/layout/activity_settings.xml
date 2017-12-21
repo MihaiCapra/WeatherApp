@@ -95,5 +95,12 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:text="@string/mph" />
+
+        <RadioButton
+            android:id="@+id/wind_ms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/m_s" />
     </RadioGroup>
 </android.support.constraint.ConstraintLayout>

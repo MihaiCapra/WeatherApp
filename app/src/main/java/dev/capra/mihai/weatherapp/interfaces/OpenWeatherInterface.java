@@ -9,6 +9,6 @@ import retrofit2.http.GET;
  */
 
 public interface OpenWeatherInterface {
-    @GET("weather.json")
+    @GET("api")
     Call<WeatherData> getWeatherData();
 }
